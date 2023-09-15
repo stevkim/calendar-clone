@@ -6,7 +6,7 @@ export const timeConverter = (time: string): string => {
 	let hours: number | string = parseInt(TIME_IN_HOURS_MINUTES[0]);
 	let minutes: number | string = parseInt(TIME_IN_HOURS_MINUTES[1]);
 
-	let timeOfDay: string = 'AM';
+	let timeOfDay = 'AM';
 
 	if (hours < 12) {
 		timeOfDay = 'AM';
@@ -30,11 +30,11 @@ export const timeConverter = (time: string): string => {
 };
 
 export const calendarList = (year: number, month: number) => {
-	let dayList: IDay[] = [];
+	const dayList: IDay[] = [];
 	const REQUIRED_LIST_LENGTH = 42;
 
-	let prevMonthTotal: number = new Date(year, month, 0).getDate() + 1;
-	let firstDayOfMonth: number = new Date(year, month).getDay();
+	const prevMonthTotal: number = new Date(year, month, 0).getDate() + 1;
+	const firstDayOfMonth: number = new Date(year, month).getDay();
 	for (let i = firstDayOfMonth; i > 0; i--) {
 		dayList.push({
 			day: prevMonthTotal - i,
@@ -45,11 +45,11 @@ export const calendarList = (year: number, month: number) => {
 		});
 	}
 
-	let currMonthTotal: number = new Date(year, month + 1, 0).getDate();
-	let date = new Date();
-	let thisMonth = date.getMonth();
-	let thisYear = date.getFullYear();
-	let today = date.getDate();
+	const currMonthTotal: number = new Date(year, month + 1, 0).getDate();
+	const date = new Date();
+	const thisMonth = date.getMonth();
+	const thisYear = date.getFullYear();
+	const today = date.getDate();
 	for (let i = 1; i <= currMonthTotal; i++) {
 		dayList.push({
 			day: i,
@@ -61,7 +61,7 @@ export const calendarList = (year: number, month: number) => {
 	}
 
 	let dayTracker = 1;
-	let currListLength: number = dayList.length;
+	const currListLength: number = dayList.length;
 	for (let i = currListLength; i < REQUIRED_LIST_LENGTH; i++) {
 		dayList.push({
 			day: dayTracker,
@@ -80,7 +80,7 @@ export const dateUpdater = (year: number, month: number): IDate => {
 	let newYear = year;
 
 	if (month < 0 || month > 11) {
-		let newDate = new Date(year, month);
+		const newDate = new Date(year, month);
 		newMonth = newDate.getMonth();
 		newYear = newDate.getFullYear();
 	}
@@ -97,10 +97,10 @@ export const sliceText = (text: string) => {
 };
 
 export const sortListItems = (list: IListItem[]) => {
-	let timeAM = list.filter((items) => {
-		return items.time === '' || items.time!.includes('AM');
+	const timeAM = list.filter((items) => {
+		return items.time === '' || items.time ? items.time.includes('AM') : undefined;
 	});
-	let timePM = list.filter((items) => {
+	const timePM = list.filter((items) => {
 		return items.time !== undefined && items.time.includes('PM');
 	});
 
@@ -127,14 +127,14 @@ export const sortListItems = (list: IListItem[]) => {
 		});
 	}
 
-	let sortedList1 = sortList(timeAM);
-	let sortedList2 = sortList(timePM);
+	const sortedList1 = sortList(timeAM);
+	const sortedList2 = sortList(timePM);
 
 	return sortedList1.concat(sortedList2);
 };
 
 export const generateYears = (year: number) => {
-	let yearList = [];
+	const yearList = [];
 	for (let i = -50; i < 10; i++) {
 		yearList.push(year + i);
 	}
