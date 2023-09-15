@@ -1,0 +1,290 @@
+:root {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+.calendar-list,
+.day-of-week {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-list {
+	height: 88vh;
+	grid-template-rows: repeat(6, 1fr);
+}
+
+.day-of-week {
+	text-align: center;
+	padding: 5px;
+	border-bottom: .5px solid rgba(0, 0, 0, 0.8);
+}
+
+.day {
+	width: auto;
+	height: auto;
+	padding: 10px;
+	border: 0.5px solid rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+}
+
+.inactive {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.weekend {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.day p {
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.display-only {
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	font-size: 12px;
+	line-height: .8rem;
+}
+
+.display-only-time {
+	position: absolute;
+	right: 0;
+	margin: 0 !important;
+}
+
+.display-only li {
+	margin-bottom: .6rem;
+}
+
+@media only screen and (max-width: 1150px) {
+	.display-only-time {
+		display: none;
+	}
+}
+
+ul li {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+	position: relative;
+	white-space: nowrap;
+	border-radius: 2px;
+	text-indent: 5px;
+}
+
+ul li::after {
+	content: '';
+	background-color: rgba(0, 0, 0, 0.1);
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	bottom: -5px;
+}
+
+.list-time {
+	margin-left: auto;
+	margin-right: 1rem;
+}
+
+.list-form {
+	display: flex;
+	align-items: center;
+	margin-top: auto;
+	width: 100%;
+	padding-top: 10px;
+	border-top: 0.3px solid rgba(0, 0, 0, 0.5);
+}
+
+.list-form button {
+	height: 1.2rem;
+	width: auto;
+}
+
+.list-form label {
+	margin-right: 5px;
+}
+
+.text-input {
+	width: auto;
+	height: 1rem;
+	margin-right: auto;
+}
+
+.time-input {
+	height: 1.15rem;
+	min-width: 6rem;
+	width: auto;
+	margin-right: 1rem;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+	padding-left: 0;
+}
+
+.modal-overlay {
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	z-index: 2;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-display {
+	background: white;
+	height: auto;
+	min-height: 60%;
+	width: 40rem;
+	border-radius: 5px;
+	padding: 2rem;
+	z-index: 5;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modal-display:focus-visible {
+	background-color: blue;
+}
+
+@media only screen and (max-width: 786px) {
+	.modal-display {
+		width: 80%;
+	}
+
+	.list-form {
+		white-space: nowrap;
+		flex-direction: column;
+		align-items: start;
+	}
+
+	.color-picker {
+		margin: 5px 0;
+	}
+}
+
+.check {
+	text-decoration: line-through;
+	opacity: 0.6;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+}
+
+.calendar-header {
+	display: flex;
+	width: 100%;
+}
+
+.buttons {
+	display: flex;
+	position: absolute;
+	right: 20px;
+}
+
+button {
+	display: flex;
+	align-items: center;
+	margin: 0 2px;
+	font-family: 'Roboto', sans-serif;
+	-webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+	border: none;
+	background-color: white;
+	cursor: pointer;
+	min-height: 1.2rem;
+	border-radius: 2px;
+}
+
+#month,
+#year {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	font-family: 'Roboto', sans-serif;
+	cursor: pointer;
+}
+
+#month {
+	text-align: right;
+	font-size: 30px;
+	max-width: 10rem;
+	margin-left: 10px;
+	margin-right: 8px;
+	font-weight: 600;
+}
+
+#month:focus-visible,
+#year:focus-visible,
+.color-picker:focus-visible {
+	outline: none;
+}
+
+#year {
+	margin-bottom: auto;
+	font-size: 20px;
+}
+
+.current-day {
+	background: rgb(250, 93, 93);
+	color: white;
+	width: 1.2rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	text-align: center;
+	border-radius: 50%;
+}
+
+.color-picker {
+	width: 1.3rem;
+	height: 1.3rem;
+	padding: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin-right: 0.5rem;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+	padding: 3px;
+}
+input[type='color']::-webkit-color-swatch {
+	border: 0.2px solid black;
+}
+
+.color-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+h3 {
+	margin-block-start: 0;
+}
