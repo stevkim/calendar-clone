@@ -15,9 +15,9 @@ const Calendar = () => {
 	const [yearList, setYearList] = useState<number[]>([]);
 
 	useEffect(() => {
-		let date = new Date();
-		let month = date.getMonth();
-		let year = date.getFullYear();
+		const date = new Date();
+		const month = date.getMonth();
+		const year = date.getFullYear();
 		setDate({ year: year, month: month });
 		setYearList(generateYears(year));
 		setDayList(calendarList(year, month));
@@ -36,9 +36,9 @@ const Calendar = () => {
 	};
 
 	const handleToday = () => {
-		let date = new Date();
-		let month = date.getMonth();
-		let year = date.getFullYear();
+		const date = new Date();
+		const month = date.getMonth();
+		const year = date.getFullYear();
 		setDate({ year: year, month: month });
 	};
 
